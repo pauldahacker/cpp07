@@ -19,7 +19,7 @@ int main(void)
 	long double	ldb_array[] = \
 		{LDBL_MAX,LDBL_MIN,FLT_MAX,FLT_MIN,INT_MAX,INT_MIN,0.8,-0.8};
 	std::string	string_array[] = \
-		{"Hello","My","name","is","Paul","de","Mascarel","!"};
+		{"Hello", "everybody", "whats up"};
 	void	*ptr_array[] = \
 		{&llint_array, &ldb_array, &string_array, &bool_array, &char_array};
 
@@ -36,7 +36,7 @@ int main(void)
 	::iter(ldb_array, 8, printElem);
 	std::cout << "-------------------------------" << std::endl;
 	std::cout << "STD::STRING array:" << std::endl;
-	::iter(string_array, 8, printElem);
+	::iter(string_array, 3, printElem);
 	std::cout << "-------------------------------" << std::endl;
 	std::cout << "POINTER array:" << std::endl;
 	::iter(ptr_array, 5, printElem);

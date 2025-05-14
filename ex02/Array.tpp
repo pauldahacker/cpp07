@@ -5,6 +5,10 @@
 # include <cstddef>
 # include <stdexcept>
 
+/*
+https://en.cppreference.com/w/cpp/error/out_of_range
+
+*/
 template<typename T>
 class Array {
 	public:
@@ -23,6 +27,7 @@ class Array {
 		{
 			for (unsigned int i = 0; i < size(); ++i)
 				this->_array[i] = other[i];
+			*this = other;
 			std::cout << "Copied Array with size " << size() << std::endl;
 		}
 		// Destructor
@@ -46,12 +51,12 @@ class Array {
 			}
 			return (*this);
 		}
-		// Subscript operator overload
+		// Subscript operator overloads
 		T	&operator[](unsigned int index)
 		{
 			if (index < size())
 				return (this->_array[index]);
-			throw (std::out_of_range("Index is out of bounds"));
+			throw (std::out_of_range("Index is out of bounds!"));
 		}
 		const T	&operator[](unsigned int index) const
 		{
@@ -70,15 +75,5 @@ class Array {
 		unsigned int	_n;
 		T				*_array;
 };
-
-template<typename T>
-std::ostream& operator<<(std::ostream& out, const Array<T> &array)
-{
-	out << "size: " << array.size() << ", content: ";
-	for (unsigned int i = 0; i < array.size(); ++i)
-		out << "[" << array[i] << "] ";
-	out << std::endl;
-	return (out);
-}
 
 #endif

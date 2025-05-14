@@ -2,6 +2,17 @@
 #include <cmath>
 #include "../ex01/iter.hpp"
 
+// << operator overload (for printing tests)
+template<typename T>
+std::ostream& operator<<(std::ostream& out, const Array<T> &array)
+{
+	out << "size: " << array.size() << ", content: ";
+	for (unsigned int i = 0; i < array.size(); ++i)
+		out << "[" << array[i] << "] ";
+	out << std::endl;
+	return (out);
+}
+
 int main(void)
 {
 	std::cout << "----------------------------------------" << std::endl;
@@ -40,6 +51,16 @@ int main(void)
 	std::cout << testCpy;
 	std::cout << "Assigned + modified Array:" << std::endl;
 	std::cout << test;
+	std::cout << "----------------------------------------" << std::endl;
+	// Out of bounds exception
+	try
+	{
+		std::cout << test[3] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	std::cout << "----------------------------------------" << std::endl;
 	return (0);
 }
